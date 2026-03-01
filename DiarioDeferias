@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class DiarioDeFerias {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        MeuDiarioDeFerias diarios = new MeuDiarioDeFerias();
+        int opcao = 0;
+
+        while (opcao != 5) {
+            
+            System.out.println("======= MENU DIÁRIO DE FÉRIAS =======");
+            System.out.println("1 - Adicionar nova atividade");
+            System.out.println("2 - Listar todas as atividades");
+            System.out.println("3 - Listar atividades ordenadas por nota");
+            System.out.println("4 - Pesquisar atividades por tag");
+            System.out.println("5 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    System.out.println("Digite a descrição:");
+                    String desc = sc.nextLine();
+
+                    System.out.println("Digite a nota:");
+                    double nota = sc.nextDouble();
+                    sc.nextLine();
+
+                    System.out.println("Digite a tag:");
+                    String tag = sc.nextLine();
+
+                    AtividadeDeFerias novaAtividade =
+                            new AtividadeDeFerias(desc, nota, tag);
+
+                    diarios.adicionaAtividade(novaAtividade);
+                    System.out.println("Atividade adicionada!");
+                    break;
+
+                case 2:
+                    System.out.println("Listando atividades:");
+                    diarios.listarAtividades();
+                    break;
+
+                case 3:
+                    System.out.println("Atividades ordenadas por nota:");
+                    diarios.listarOrdenadas();
+                    break;
+
+                case 4:
+                    System.out.println("Digite uma tag:");
+                    String tagatividade = sc.nextLine();
+                    diarios.Pesquisar(tagatividade);
+                    break;
+
+                case 5:
+                    System.out.println("Fim do programa.");
+                    break;
+
+                default:
+                    System.out.println("Digite uma opção válida.");
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
