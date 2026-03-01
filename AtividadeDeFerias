@@ -1,0 +1,67 @@
+import java.util.Objects;
+
+    public class AtividadeDeFerias {
+        private String descricao;
+        private double nota;
+        private String tag;
+
+        public AtividadeDeFerias(String descricao, double nota, String tag) {
+            this.descricao = descricao;
+            this.nota = nota;
+            this.tag = tag;
+        }
+
+        public void setDescricao(String descricao) throws Exception {
+            if(descricao == null || descricao.trim().isEmpty()) {
+                throw new IllegalAccessException("Erro");
+            }
+            this.descricao = descricao;
+        }
+
+        public void setNota(double nota) throws Exception {
+            if(nota < 0 || nota > 10) {
+                throw new IllegalAccessException("A nota precisa ser entre o e 10");
+            }
+            this.nota = nota;
+        }
+
+        public void setTag(String tag) throws Exception {
+            if(tag == null || tag.trim().isEmpty()) {
+                throw new IllegalAccessException("Erro");
+            }
+            this.tag = tag;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public double getNota() {
+            return nota;
+        }
+
+        public String getTag() {
+            return tag;
+        }
+
+        @Override
+        public String toString() {
+            return "AtividadeDeFerias{" +
+                    "descricao='" + descricao + '\'' +
+                    ", nota=" + nota +
+                    ", tag='" + tag + '\'' +
+                    '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null || getClass() != o.getClass()) return false;
+            AtividadeDeFerias that = (AtividadeDeFerias) o;
+            return Double.compare(nota, that.nota) == 0 && Objects.equals(descricao, that.descricao) && Objects.equals(tag, that.tag);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(descricao, nota, tag);
+        }
+    }
