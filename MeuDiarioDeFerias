@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+
+    public class MeuDiarioDeFerias {
+        ArrayList<AtividadeDeFerias> atividades = new ArrayList<>();
+
+        public void adicionaAtividade (AtividadeDeFerias novaAtividade){
+            atividades.add(novaAtividade);
+
+        }
+        public void listarAtividades() {
+            for(AtividadeDeFerias at: atividades){
+                System.out.println(at);
+            }
+        }
+        public void listarOrdenadas() {
+            atividades.sort(Comparator.comparing(AtividadeDeFerias::getNota));
+            for(AtividadeDeFerias at: atividades) {
+                System.out.println(at);
+            }
+        }
+        public void Pesquisar(String tag) {
+            for(AtividadeDeFerias at: atividades) {
+                if(tag.equals(at.getTag())) {
+                    System.out.println(at);
+
+                }
+            }
+        }
+
+    }
